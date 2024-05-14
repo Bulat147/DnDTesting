@@ -1,4 +1,4 @@
-package per.khalilov;
+package per.khalilov.test;
 
 import per.khalilov.model.AccountData;
 import org.junit.Test;
@@ -7,11 +7,11 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void testLogin() {
-        openHomePage();
+        manager.goTo().homePage();
         AccountData user = new AccountData("Bulat147", "147258369Hb");
-        loginUser(user);
-        openUserProfile();
-        logoutUser();
+        manager.manageAccount().loginUser(user);
+        manager.goTo().userProfile();
+        manager.manageAccount().logoutUser();
     }
 
 }

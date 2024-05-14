@@ -1,4 +1,4 @@
-package per.khalilov;
+package per.khalilov.test;
 
 import per.khalilov.model.AccountData;
 import org.junit.Test;
@@ -16,10 +16,10 @@ public class MagicItemTest extends BaseTest {
                 MagicItemData.ItemQualityEnum.Artefact,
                 "safsdgfsdfsgsdfgdsf g nfg fdn dkfj jdfs,b df.kjb dhfj bkjdfb ksjdb hjbcxj bsdb kjb jhb jkdb cxjkb kdsjbxcjkxb jds");
 
-        openHomePage();
-        loginUser(user);
-        createMagicItem(magicItem);
-        logoutUser();
+        manager.goTo().homePage();
+        manager.manageAccount().loginUser(user);
+        manager.magicItem().createMagicItem(magicItem);
+        manager.manageAccount().logoutUser();
     }
 
 }
