@@ -1,10 +1,11 @@
 package per.khalilov.helper;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import per.khalilov.ApplicationManager;
 import per.khalilov.model.AccountData;
+
+import static per.khalilov.test.BaseTest.sleepWithTime;
 
 public class LoginHelper extends HelperBase {
 
@@ -21,8 +22,7 @@ public class LoginHelper extends HelperBase {
     }
 
     public void logoutUser() {
-        WebElement element = driver.findElement(By.xpath("//*[@id=\"aside\"]/nav/ul/li[7]/ul/li[5]/a"));
-        element.sendKeys(Keys.PAGE_DOWN);
+        WebElement element = driver.findElement(By.xpath("//span[text()=\"Выход\"]"));
         element.click();
     }
 }

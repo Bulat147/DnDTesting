@@ -3,6 +3,8 @@ package per.khalilov.helper;
 import org.openqa.selenium.By;
 import per.khalilov.ApplicationManager;
 
+import static per.khalilov.test.BaseTest.sleepWithTime;
+
 public class NavigationHelper extends HelperBase {
 
     private String baseUrl;
@@ -22,5 +24,6 @@ public class NavigationHelper extends HelperBase {
 
     public void homePage() {
         driver.get(baseUrl);
+        sleepWithTime(1000L);
     }
 }

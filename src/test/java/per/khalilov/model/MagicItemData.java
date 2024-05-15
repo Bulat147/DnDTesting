@@ -35,11 +35,11 @@ public class MagicItemData {
         FantasticItem("9", "Чудесный предмет");
 
         public final String index;
-        public final String name;
+        public final String title;
 
-        private ItemTypeEnum(String index, String name) {
+        private ItemTypeEnum(String index, String title) {
             this.index = index;
-            this.name = name;
+            this.title = title;
 
         }
     }
@@ -55,11 +55,11 @@ public class MagicItemData {
         QualityVaries("8", "Редкость варьируется");
 
         public final String index;
-        public final String name;
+        public final String title;
 
-        private ItemQualityEnum(String index, String name) {
+        private ItemQualityEnum(String index, String title) {
             this.index = index;
-            this.name = name;
+            this.title = title;
         }
     }
 
