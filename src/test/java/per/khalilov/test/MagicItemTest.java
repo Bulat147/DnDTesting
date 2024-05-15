@@ -3,8 +3,6 @@ package per.khalilov.test;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.runners.Parameterized;
-import org.openqa.selenium.By;
 import per.khalilov.ApplicationManager;
 import per.khalilov.model.AccountData;
 import org.junit.Test;
