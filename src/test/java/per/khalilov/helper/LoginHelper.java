@@ -22,7 +22,6 @@ public class LoginHelper extends HelperBase {
 
     public void logoutUser() {
         WebElement element = driver.findElement(By.xpath("//*[@id=\"aside\"]/nav/ul/li[7]/ul/li[5]/a"));
-        element.sendKeys(Keys.PAGE_DOWN);
         element.click();
     }
 }

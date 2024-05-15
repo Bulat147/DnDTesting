@@ -10,7 +10,7 @@ public class MagicItemTest extends BaseTest {
 
     @Test
     public void createMagicItemTest() {
-        AccountData user = new AccountData("Bulat147", "147258369Hb");
+        AccountData user = new AccountData("B147258", "147258369Hb");
         MagicItemData magicItem = new MagicItemData(UUID.randomUUID().toString(),
                 MagicItemData.ItemTypeEnum.Potion,
                 MagicItemData.ItemQualityEnum.Artefact,
@@ -19,6 +19,7 @@ public class MagicItemTest extends BaseTest {
         manager.goTo().homePage();
         manager.manageAccount().loginUser(user);
         manager.magicItem().createMagicItem(magicItem);
+        manager.goTo().homePage();
         manager.manageAccount().logoutUser();
     }
 
