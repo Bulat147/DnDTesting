@@ -3,6 +3,7 @@ package per.khalilov.generator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import per.khalilov.model.MagicItemData;
+import per.khalilov.model.MagicItems;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -11,7 +12,6 @@ import java.util.List;
 public class MagicItemTestDataParser {
 
     public static List<MagicItemData> parseMagicItemData(String fileName) throws JsonProcessingException {
-        List<MagicItemData> magicItemDataList = new ArrayList<>();
         File file = new File(fileName);
         XmlMapper xmlMapper = new XmlMapper();
         String xml = null;
@@ -20,11 +20,9 @@ public class MagicItemTestDataParser {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        List<String> value = xmlMapper.readValue(xml, List.class);
-        for (String o : value) {
-            magicItemDataList.add(xmlMapper.readValue(o, MagicItemData.class));
-        }
-        return magicItemDataList;
+        MagicItems value = xmlMapper.readValue(xml, MagicItems.class);
+
+        return value.getMagicItems();
     }
 
     public static String inputStreamToString(InputStream is) throws IOException {

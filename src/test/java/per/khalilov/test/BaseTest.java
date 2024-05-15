@@ -1,11 +1,13 @@
 package per.khalilov.test;
 
 import org.junit.AfterClass;
+import org.junit.runners.Parameterized;
 import per.khalilov.ApplicationManager;
 import org.junit.Before;
 
 import static java.lang.Thread.sleep;
 
+@Parameterized.UseParametersRunnerFactory
 public class BaseTest {
 
     protected ApplicationManager manager;

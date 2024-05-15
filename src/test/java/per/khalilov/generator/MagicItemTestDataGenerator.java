@@ -2,6 +2,7 @@ package per.khalilov.generator;
 
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import per.khalilov.model.MagicItemData;
+import per.khalilov.model.MagicItems;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,11 +14,11 @@ public class MagicItemTestDataGenerator {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите кол-во предметов: ");
         int count = scanner.nextInt();
-        saveToXml(generateMagicItems(count), "magicItems" + new Random().nextInt(1000) + ".xml");
+        saveToXml(generateMagicItems(count), "magicItems.xml");
     }
 
-    public static List<MagicItemData> generateMagicItems(int count) {
-        List<MagicItemData> magicItems = new ArrayList<>();
+    public static MagicItems generateMagicItems(int count) {
+        MagicItems magicItems = new MagicItems();
 
         for (int i = 0; i < count; i++) {
             MagicItemData magicItem = new MagicItemData(UUID.randomUUID().toString(),
@@ -28,7 +29,7 @@ public class MagicItemTestDataGenerator {
             magicItem.setSubtype(randomString(12));
             magicItem.setSubquality(randomString(10));
             magicItem.setTitleEn(randomString(12));
-            magicItems.add(magicItem);
+            magicItems.getMagicItems().add(magicItem);
         }
         return magicItems;
     }
@@ -44,7 +45,7 @@ public class MagicItemTestDataGenerator {
         return sb.toString();
     }
 
-    public static void saveToXml(List<MagicItemData> magicItems, String fileName) {
+    public static void saveToXml(MagicItems magicItems, String fileName) {
         XmlMapper xmlMapper = new XmlMapper();
         try {
             xmlMapper.writeValue(new File(fileName), magicItems);
