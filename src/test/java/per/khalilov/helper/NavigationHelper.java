@@ -20,6 +20,7 @@ public class NavigationHelper extends HelperBase {
 
     public void workshopPage() {
         driver.findElement(By.xpath("//*[@id=\"aside\"]/nav/ul/li[7]/ul/li[2]/a/span[2]")).click();
+        sleepWithTime(1000L);
     }
 
     public void homePage() {

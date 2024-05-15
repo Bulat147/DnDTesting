@@ -1,6 +1,5 @@
 package per.khalilov;
 
-import org.junit.runners.Parameterized;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -30,6 +29,7 @@ public class ApplicationManager {
             app.set(new ApplicationManager());
             manager = app.get();
             manager.setUp();
+//            Runtime.getRuntime().addShutdownHook(new Thread(manager::tearDown));
         } else {
             manager = app.get();
         }
@@ -48,7 +48,9 @@ public class ApplicationManager {
     }
 
     public void tearDown() {
-
+        try {
+            driver.quit();
+        } catch (Exception e) {}
     }
 
     public NavigationHelper goTo() {
