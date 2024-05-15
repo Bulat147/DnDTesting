@@ -23,9 +23,4 @@ public class BaseTest {
         }
     }
 
-    @AfterClass
-    public static void tearDown() {
-        ApplicationManager.getInstance().tearDown();
-    }
-
 }

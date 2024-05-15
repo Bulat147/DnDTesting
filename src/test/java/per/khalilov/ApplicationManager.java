@@ -29,7 +29,9 @@ public class ApplicationManager {
             app.set(new ApplicationManager());
             manager = app.get();
             manager.setUp();
-//            Runtime.getRuntime().addShutdownHook(new Thread(manager::tearDown));
+            Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+                manager.driver.quit();
+            }));
         } else {
             manager = app.get();
         }
@@ -45,12 +47,6 @@ public class ApplicationManager {
         loginHelper = new LoginHelper(this);
         magicItemHelper = new MagicItemHelper(this);
         navigationHelper = new NavigationHelper(this, baseUrl);
-    }
-
-    public void tearDown() {
-        try {
-            driver.quit();
-        } catch (Exception e) {}
     }
 
     public NavigationHelper goTo() {
