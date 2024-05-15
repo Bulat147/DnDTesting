@@ -7,13 +7,20 @@ import per.khalilov.model.MagicItemData;
 import java.util.Arrays;
 import java.util.Objects;
 
-import static java.lang.Thread.sleep;
 import static per.khalilov.test.BaseTest.sleepWithTime;
 
 public class MagicItemHelper extends HelperBase {
 
     public MagicItemHelper(ApplicationManager manager) {
         super(manager);
+    }
+
+    public void editMagicItemSubtype(String subtype) {
+        driver.findElement(By.xpath("//*[@id=\"body\"]/main/div/div/div/section[2]/div[2]/div/div/div[2]/div")).click();
+        driver.findElement(By.cssSelector("#body > main > div > div > div > section:nth-child(2) > div.cards-wrapper > div > div > div.card__header > div > ul > li:nth-child(3)")).click();
+        driver.findElement(By.name("subtype")).clear();
+        driver.findElement(By.name("subtype")).sendKeys(subtype);
+        driver.findElement(By.cssSelector(".btn")).click();
     }
 
     public void createMagicItem(MagicItemData magicItem) {

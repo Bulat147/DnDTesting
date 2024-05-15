@@ -62,4 +62,5 @@ public class ApplicationManager {
     public MagicItemHelper magicItem() {
         return magicItemHelper;
     }
+
 }
