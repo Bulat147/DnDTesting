@@ -34,7 +34,6 @@ public class MagicItemTestDataGenerator {
         return magicItems;
     }
 
-
     public static String randomString(int length) {
         String alf = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
         Random random = new Random();

@@ -3,6 +3,8 @@ package per.khalilov.test;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import per.khalilov.ApplicationManager;
 import per.khalilov.model.AccountData;
 import org.junit.Test;
@@ -16,9 +18,17 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static per.khalilov.generator.MagicItemTestDataParser.parseMagicItemData;
 
+@RunWith(Parameterized.class)
 public class MagicItemTest extends AuthBase {
 
-    public static List<MagicItemData> getMagicItems() {
+    private MagicItemData magicItem;
+
+    public MagicItemTest(MagicItemData magicItem) {
+        this.magicItem = magicItem;
+    }
+
+    @Parameterized.Parameters
+    public static List<MagicItemData> magicItems() {
         try {
             return parseMagicItemData("magicItems.xml");
         } catch (JsonProcessingException e) {
@@ -26,14 +36,8 @@ public class MagicItemTest extends AuthBase {
         }
     }
 
-    @ParameterizedTest
-    @MethodSource("getMagicItems")
-    public void testCreateMagicItem(MagicItemData magicItem) {
-        manager = ApplicationManager.getInstance();
-        AccountData user = new AccountData(Settings.username, Settings.password);
-
-        manager.goTo().homePage();
-        manager.manageAccount().loginUser(user);
+    @Test
+    public void testCreateMagicItem() {
         manager.magicItem().createMagicItem(magicItem);
         MagicItemData created = manager.magicItem().getCreatedMagicItemData();
 
