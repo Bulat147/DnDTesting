@@ -7,6 +7,7 @@ import per.khalilov.ApplicationManager;
 import per.khalilov.model.AccountData;
 import org.junit.Test;
 import per.khalilov.model.MagicItemData;
+import per.khalilov.util.Settings;
 
 import java.util.List;
 import java.util.UUID;
@@ -29,7 +30,7 @@ public class MagicItemTest extends AuthBase {
     @MethodSource("getMagicItems")
     public void testCreateMagicItem(MagicItemData magicItem) {
         manager = ApplicationManager.getInstance();
-        AccountData user = new AccountData("B147258", "147258369Hb");
+        AccountData user = new AccountData(Settings.username, Settings.password);
 
         manager.goTo().homePage();
         manager.manageAccount().loginUser(user);

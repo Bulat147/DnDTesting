@@ -3,6 +3,7 @@ package per.khalilov.test;
 import org.openqa.selenium.By;
 import per.khalilov.model.AccountData;
 import org.junit.Test;
+import per.khalilov.util.Settings;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -11,7 +12,7 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void testLoginWithValidData() {
-        AccountData user = new AccountData("Bulat147", "147258369Hb");
+        AccountData user = new AccountData(Settings.username, Settings.password);
 
         manager.manageAccount().logoutUser();
         manager.manageAccount().loginUser(user);

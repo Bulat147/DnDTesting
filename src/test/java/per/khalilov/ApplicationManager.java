@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import per.khalilov.helper.LoginHelper;
 import per.khalilov.helper.MagicItemHelper;
 import per.khalilov.helper.NavigationHelper;
+import per.khalilov.util.Settings;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,7 +44,7 @@ public class ApplicationManager {
         driver.manage().window().maximize();
         js = (JavascriptExecutor) driver;
         vars = new HashMap<String, Object>();
-        baseUrl = "https://dnd.su/";
+        baseUrl = Settings.baseUrl;
         loginHelper = new LoginHelper(this);
         magicItemHelper = new MagicItemHelper(this);
         navigationHelper = new NavigationHelper(this, baseUrl);
