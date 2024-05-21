@@ -15,6 +15,7 @@ public class BaseTest {
     @Before
     public void setUp() {
         manager = ApplicationManager.getInstance();
+        manager.goTo().homePage();
     }
 
     public static void sleepWithTime(Long millis) {

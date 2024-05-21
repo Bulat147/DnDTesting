@@ -15,7 +15,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static per.khalilov.generator.MagicItemTestDataParser.parseMagicItemData;
 
-public class MagicItemTest extends BaseTest {
+public class MagicItemTest extends AuthBase {
 
     public static List<MagicItemData> getMagicItems() {
         try {
@@ -35,8 +35,6 @@ public class MagicItemTest extends BaseTest {
         manager.manageAccount().loginUser(user);
         manager.magicItem().createMagicItem(magicItem);
         MagicItemData created = manager.magicItem().getCreatedMagicItemData();
-        manager.goTo().homePage();
-        manager.manageAccount().logoutUser();
 
         assertThat("", magicItem.getTitle(), equalTo(created.getTitle()));
         assertThat("", magicItem.getType(), equalTo(created.getType()));
@@ -46,7 +44,6 @@ public class MagicItemTest extends BaseTest {
 
     @Test
     public void testEditMagicItem() {
-        AccountData user = new AccountData("B147258", "147258369Hb");
         MagicItemData magicItem = new MagicItemData(UUID.randomUUID().toString(),
                 MagicItemData.ItemTypeEnum.Potion,
                 MagicItemData.ItemQualityEnum.Artefact,
@@ -57,13 +54,9 @@ public class MagicItemTest extends BaseTest {
         magicItem.setTitleEn("sdfasdgsdfvf");
         String magicItemEditedSubtype = "testSubtypeeeeeeeee";
 
-        manager.goTo().homePage();
-        manager.manageAccount().loginUser(user);
         manager.magicItem().createMagicItem(magicItem);
         manager.magicItem().editMagicItemSubtype(magicItemEditedSubtype);
         MagicItemData created = manager.magicItem().getCreatedMagicItemData();
-        manager.goTo().homePage();
-        manager.manageAccount().logoutUser();
 
         assertThat("", created.getSubtype(), equalTo(magicItemEditedSubtype));
     }
